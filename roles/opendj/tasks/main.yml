@@ -1,0 +1,17 @@
+- name: Install Java 1.7
+  yum: name=java-1.7.0-openjdk state=present
+
+- name: Update NSS security libraries
+  yum: name=nss* state=latest
+
+- name: create install dir
+  file: path={{ install_dir }} state=directory
+
+- name: unpack opendj
+  command: chdir={{ install_dir }} creates={{ install_dir }}/opendj unzip {{ binaries_dir }}/opendj.zip
+
+- name: copy opendj props file
+  template: src=opendj.properties dest=/tmp/opendj.properties
+
+- name: setup opendj
+  command: creates={{install_dir}}/opendj/config {{install_dir}}/opendj/setup --cli --propertiesFilePath /tmp/opendj.properties --acceptLicense --generateSelfSignedCertificate  --no-prompt

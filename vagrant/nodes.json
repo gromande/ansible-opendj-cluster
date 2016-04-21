@@ -1,0 +1,20 @@
+[
+    {
+      ":node_name": "opendj",
+      ":ip": "192.168.82.2",
+      ":hostname": "opendj.groman.com",
+      ":memory": 512
+    },
+    {
+      ":node_name": "opendj1",
+      ":ip": "192.168.82.3",
+      ":hostname": "opendj1.groman.com",
+      ":memory": 1024
+    },
+    {
+      ":node_name": "opendj2",
+      ":ip": "192.168.82.4",
+      ":hostname": "opendj2.groman.com",
+      ":memory": 1024
+    }
+] 

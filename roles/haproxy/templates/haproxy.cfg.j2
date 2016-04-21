@@ -1,0 +1,43 @@
+global
+    log         127.0.0.1 local2
+
+    chroot      /var/lib/haproxy
+    pidfile     /var/run/haproxy.pid
+    maxconn     4000
+    user        root
+    group       root
+    daemon
+
+defaults
+    mode                    tcp
+    log                     global
+    option                  socket-stats
+    option                  tcpka
+    retries                 3
+    timeout queue           1m
+    timeout connect         10s
+    timeout client          1m
+    timeout server          1m
+    timeout check           10s
+
+frontend ldap-in
+    bind *:{{ ldap_port }}
+    default_backend ldap
+
+backend ldap
+    balance     {{ balance }}
+    option      ldap-check
+    {% for host in groups['opendj-servers'] %}
+        server {{ host }} {{ hostvars[host]['ansible_' + iface].ipv4.address }}:{{ ldap_port }} fall 1 rise 1 inter 2s
+    {% endfor %}
+
+frontend ldaps-in
+    bind *:{{ ldaps_port }}
+    default_backend ldaps
+
+backend ldaps
+    balance     {{ balance }}
+    option      ssl-hello-chk
+    {% for host in groups['opendj-servers'] %}
+        server {{ host }} {{ hostvars[host]['ansible_' + iface].ipv4.address }}:{{ ldaps_port }} fall 1 rise 1 inter 2s
+    {% endfor %}

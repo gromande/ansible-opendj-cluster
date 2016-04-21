@@ -1,0 +1,1 @@
+{"virtualbox":{"/vagrant/bits":{"guestpath":"/vagrant/bits","hostpath":"/Users/guille/Bits/forgerock","disabled":false},"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/guille/Projects/ansible/ansible-opendj-cluster/vagrant","disabled":false}}}

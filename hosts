@@ -1,0 +1,6 @@
+[opendj-servers]
+opendj1.groman.com
+opendj2.groman.com
+
+[lbservers]
+opendj.groman.com
