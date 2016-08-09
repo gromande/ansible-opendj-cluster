@@ -1,0 +1,5 @@
+- name: enable replication
+  command: "{{install_dir}}/opendj/bin/dsreplication enable --adminUID {{opendj_rep_admin}} --adminPassword {{opendj_rep_admin_password}} --baseDN {{opendj_basedn}} --host1 opendj1.groman.com --port1 {{opendj_admin_port}} --bindDN1 '{{opendj_admin_dn}}' --bindPassword1 {{opendj_admin_password}} --replicationPort1 {{opendj_rep_port}} --secureReplication1 --host2 192.168.82.4 --port2 {{opendj_admin_port}} --bindDN2 '{{opendj_admin_dn}}' --bindPassword2 {{opendj_admin_password}} --replicationPort2 {{opendj_rep_port}} --secureReplication2 -X -n"
+
+- name: initialize replica
+  command: "{{install_dir}}/opendj/bin/dsreplication initialize-all  --adminUID {{opendj_rep_admin}}  --adminPassword {{opendj_rep_admin_password}}  --baseDN {{opendj_basedn}}  --hostname opendj1.groman.com  --port {{opendj_admin_port}} -X -n"

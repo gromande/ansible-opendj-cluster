@@ -5,6 +5,9 @@ opendj_ldap_port: 1389
 opendj_ldaps_port: 1636
 opendj_jmx_port: 8888
 opendj_admin_port: 4444
+opendj_rep_port: 8787
 opendj_admin_dn: "cn=directory manager"
 opendj_admin_password: password
+opendj_rep_admin: repadmin
+opendj_rep_admin_password: password
 opendj_basedn: "dc=groman,dc=com"

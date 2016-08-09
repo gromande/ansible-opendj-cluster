@@ -32,6 +32,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       #Run provisioner at the end, when all nodes are up
       if node_index == (nodes.size - 1)
         config.vm.provision "ansible" do |ansible|
+          ansible.verbose = true
           ansible.limit = "all"
           ansible.playbook = "../site.yml"
           ansible.inventory_path = "../hosts"

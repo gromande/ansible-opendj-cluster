@@ -1,5 +1,5 @@
 ---
-# This playbook deploys a simple Tomcat 7 cluster behind an HAProxy. 
+# This playbook deploys a simple Tomcat 7 cluster behind an HAProxy.
 
 - hosts: all
   remote_user: vagrant
@@ -9,13 +9,21 @@
   roles:
     - common
 
-- hosts: opendj-servers 
+- hosts: opendj-servers
   remote_user: vagrant
   become: yes
   become_method: sudo
 
   roles:
     - opendj
+
+- hosts: opendj-main
+  remote_user: vagrant
+  become: yes
+  become_method: sudo
+
+  roles:
+    - opendj-rep
 
 - hosts: lbservers
   remote_user: vagrant

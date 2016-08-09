@@ -2,5 +2,8 @@
 opendj1.groman.com
 opendj2.groman.com
 
+[opendj-main]
+opendj1.groman.com
+
 [lbservers]
 opendj.groman.com
